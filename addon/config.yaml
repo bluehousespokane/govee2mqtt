@@ -1,9 +1,9 @@
 name: Govee to MQTT Bridge
-image: ghcr.io/lsjohnston626/govee2mqtt-addon-{arch}
-version: "2026.03.25-ab9deb66"
+image: ghcr.io/bluehousespokane/govee2mqtt-addon-{arch}
+version: "2026.10.28-h7105.23"
 slug: govee2mqtt
 description: Control Govee Devices
-url: https://github.com/lsjohnston626/govee2mqtt/tree/feature/h7105-fan-support
+url: https://github.com/bluehousespokane/govee2mqtt/tree/release/h7105-addon-2026.07.29
 arch:
   - aarch64
 init: false

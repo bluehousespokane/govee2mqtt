@@ -258,11 +258,9 @@ impl Device {
             .ok_or_else(|| anyhow::anyhow!("H7105 Auto configuration unavailable"))
     }
 
-    pub fn h7105_auto_config_if_available(
-        &self,
-    ) -> anyhow::Result<Option<H7105AutoConfig>> {
-        let Some(packet) = self.h7105_fan_state.mode_config_packets
-            [(H7105FanMode::Auto as usize) - 1][0]
+    pub fn h7105_auto_config_if_available(&self) -> anyhow::Result<Option<H7105AutoConfig>> {
+        let Some(packet) =
+            self.h7105_fan_state.mode_config_packets[(H7105FanMode::Auto as usize) - 1][0]
         else {
             return Ok(None);
         };
@@ -287,8 +285,7 @@ impl Device {
     pub fn h7105_custom_stages_if_available(
         &self,
     ) -> anyhow::Result<Option<[H7105CustomStageConfig; 3]>> {
-        let packets = self.h7105_fan_state.mode_config_packets
-            [(H7105FanMode::Custom as usize) - 1];
+        let packets = self.h7105_fan_state.mode_config_packets[(H7105FanMode::Custom as usize) - 1];
         if packets.iter().any(Option::is_none) {
             return Ok(None);
         }
@@ -773,8 +770,8 @@ mod test {
     fn h7105_available_auto_config_is_validated() {
         let mut device = Device::new("H7105", "AA:BB:CC:DD:EE:FF");
         let mut packet = [
-            0xaa, 0x05, 0x02, 0x03, 0x1d, 0x5f, 0x05, 0x1e, 0xc8, 0x00, 0x01, 0x1e, 0x01,
-            0xc2, 0x01, 0, 0, 0, 0, 0,
+            0xaa, 0x05, 0x02, 0x03, 0x1d, 0x5f, 0x05, 0x1e, 0xc8, 0x00, 0x01, 0x1e, 0x01, 0xc2,
+            0x01, 0, 0, 0, 0, 0,
         ];
         packet[19] = packet[..19]
             .iter()

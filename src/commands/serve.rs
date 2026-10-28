@@ -329,10 +329,7 @@ impl ServeCommand {
 
                 // Sanity check for LAN devices: if we don't see an API for it,
                 // it may indicate a networking issue
-                if lan_discovery_enabled
-                    && quirk.lan_api_capable
-                    && device.lan_device.is_none()
-                {
+                if lan_discovery_enabled && quirk.lan_api_capable && device.lan_device.is_none() {
                     log::warn!(
                         "{device}: expected LAN API support, but the device did not \
                         respond to probing. Possible causes:"

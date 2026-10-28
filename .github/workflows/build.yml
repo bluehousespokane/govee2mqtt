@@ -21,7 +21,7 @@ on:
       - ".dockerignore"
 
 env:
-  IMAGE: ghcr.io/lsjohnston626/govee2mqtt
+  IMAGE: ghcr.io/bluehousespokane/govee2mqtt
 
 jobs:
   build:
@@ -165,13 +165,13 @@ jobs:
             BUILD_FROM=ghcr.io/home-assistant/aarch64-base-debian:bookworm
           container-registry-password: ${{ secrets.GITHUB_TOKEN }}
           context: ./addon
-          image: ghcr.io/lsjohnston626/govee2mqtt-addon-aarch64
+          image: ghcr.io/bluehousespokane/govee2mqtt-addon-aarch64
           image-tags: ${{ github.ref_name }}
           labels: |
             io.hass.type=app
             io.hass.name=Govee Fork Bridge
             io.hass.description=Control Govee Devices
-            io.hass.url=https://github.com/lsjohnston626/govee2mqtt
+            io.hass.url=https://github.com/bluehousespokane/govee2mqtt
           push: "true"
           version: ${{ github.ref_name }}
 
